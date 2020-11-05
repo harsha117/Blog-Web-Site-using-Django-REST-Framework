@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+
+<div class="articles">
+
+    <table class="table table-bordered">
+
+        {% for post in all_posts %}
+
+            <td><a href="{% url 'post' post.pk %}"><center>{{ post.title }}</center></a></td>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% if messages %}
+        {% for message in messages %}
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+
+            {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+
+</body>
+</html>
+
+{% endblock %}

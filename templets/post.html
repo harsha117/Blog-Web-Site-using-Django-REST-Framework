@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+</head>
+<body>
+
+<form action="post" method="get">
+    {% for dec in desc %}
+
+        <a href="{% url 'edit' dec.pk %}" class="btn btn-secondary a-btn-slide-text" name="edit" align="right">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <span><strong>Edit</strong></span>
+ </a>
+
+        <br>
+        <a href="{% url 'delete' dec.pk %}" class="btn btn-secondary a-btn-slide-text" name="delete" align="right">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <span><strong>Delete</strong></span>
+ </a>
+
+        <center><h1>{{ dec.title }}</h1></center>
+        <br>
+            <center><p>{{ dec.desc }}</p></center>
+
+    {% endfor %}
+
+{% if messages %}
+        {% for message in messages %}
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+
+            {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+</form>
+</body>
+</html>
+
+{% endblock %}

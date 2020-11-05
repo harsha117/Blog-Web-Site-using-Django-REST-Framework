@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Blog</title>
+</head>
+<body>
+
+<form action="create" method="post">
+    {% csrf_token %}
+    <center><label for="w3review"><h2>Post a blog</h2></label></center>
+
+    <div class="container">
+        <div class="td"><label for="w3review">Title</label><input type="text" name="title" id="title" placeholder="Title" required></div>
+        <div class="ts"><label for="w3review">Description</label><textarea name="desc" id="desc" placeholder="Description" rows="10" cols="50" maxlength="500" required></textarea>
+        </div>
+         <br><br>
+        <input type="submit" name="submit" value="Create">
+    </div>
+
+{#    <ul>{{ form.as_ul }}</ul>#}
+{#     <input type="submit" name="submit" value="Create">#}
+
+</form>
+
+     {% if messages %}
+        {% for message in messages %}
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+
+            {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
+
+{% endblock %}
